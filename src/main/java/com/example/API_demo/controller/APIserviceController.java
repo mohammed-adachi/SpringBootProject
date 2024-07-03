@@ -16,11 +16,11 @@ import com.example.API_demo.services.cloudvendourservice;
 @RequestMapping("/vendour")
 public class APIserviceController {
      cloudvendourservice cloudvendourservice;
-     
+
     public  APIserviceController(cloudvendourservice cloudvendourservice){
         this.cloudvendourservice = cloudvendourservice;}
     
-     @GetMapping("/{vendourid}")
+     @GetMapping("{vendourid}")
     public vendour getvendourdetail (@PathVariable("vendourid") String vendourid) {
        
         return cloudvendourservice.getvendour(vendourid);
