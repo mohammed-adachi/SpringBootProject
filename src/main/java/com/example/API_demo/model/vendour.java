@@ -1,6 +1,13 @@
 package com.example.API_demo.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vendour")
 public class vendour {
+    @Id
     private String id;
     private String name;
     private String adress;
@@ -13,10 +20,7 @@ public class vendour {
         this.phone = phone;
     }
     public vendour() {
-        this.id = "vendour id";
-        this.name = "vendour name";
-        this.adress = "vendour adress";
-        this.phone = "vendour phone";
+      
     }
     public String getId() {
         return id;
