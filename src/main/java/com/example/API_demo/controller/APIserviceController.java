@@ -1,5 +1,6 @@
 package com.example.API_demo.controller;
 import com.example.API_demo.model.vendour;
+import com.example.API_demo.reposne.responseHandler;
 
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -11,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import java.util.List;
 import com.example.API_demo.services.cloudvendourservice;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/vendour")
@@ -21,9 +24,9 @@ public class APIserviceController {
         this.cloudvendourservice = cloudvendourservice;}
     
      @GetMapping("{vendourid}")
-    public vendour getvendourdetail (@PathVariable("vendourid") String vendourid) {
-       
-        return cloudvendourservice.getvendour(vendourid);
+    public ResponseEntity<Object> getvendourdetail (@PathVariable("vendourid") String vendourid) {
+       return responseHandler.generateResponse(HttpStatus.OK, "Vendour fetched successfully", cloudvendourservice.getvendour(vendourid));
+
     }
     @GetMapping
   public List<vendour> getallvendour() {
